@@ -8,9 +8,7 @@ class ArduinoBoard:
 		self.step_interval = interval 
 
 	def step(self,stepper,steps):
-		logging.debug("Stepping board {} {:.2} times".format(stepper,steps))
-		time.sleep(1.0)
-		self.ser.write(b'%s'%(stepper))
+		self.ser.write(b'%i'%(stepper))
 		time.sleep(1.0)
 
 		goal_step_loc = steps
