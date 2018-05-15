@@ -30,9 +30,5 @@ class ArduinoBoard:
 
         logging.debug("Displacement complete")
 
-    def measure_field(self):
-    	self.ser.write(b'm')
-        time.sleep(1.0)
-    	message = self.ser.readline()
-        field = float(message.decode('utf-8'))
-        field = "{:.3e}".format(field)
+    def close(self):
+    	self.ser.close()

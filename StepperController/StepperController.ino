@@ -5,7 +5,6 @@ int ms1s[] = {ms11,ms12,ms13};
 int ms2s[] = {ms21,ms22,ms23};
 
 int curboard;
-int field;
 String input;
 
 bool backStep();
@@ -22,7 +21,6 @@ void setup() {
     pinMode(ms1s[i],OUTPUT);
     pinMode(ms2s[i],OUTPUT);
   }
-  pinMode(field,INPUT);
   resetPins();
 }
 
@@ -43,16 +41,6 @@ void loop() {
     else if (steps > 0.0){
       if (forwardStep(steps)){Serial.println("normal");};
     }
-  }
-  else {
-    float sum = 0;
-      for (int i = 0; i < 25; i ++){
-        float volt = analogRead(field);
-        volt = volt * (5.0/1024.0);
-        sum += volt; 
-      }
-    float reading = sum/25.0;
-    Serial.println(reading);
   }
 }
 
