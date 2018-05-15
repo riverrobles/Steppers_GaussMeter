@@ -34,6 +34,7 @@ void loop() {
 
   if (isDigit(input.charAt(0))){
     curboard = input.toInt();
+    while (Serial.available()==0){}
     input = Serial.readString();
     float steps = input.toFloat();
     if (steps < 0.0){

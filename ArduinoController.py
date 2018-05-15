@@ -32,6 +32,7 @@ class ArduinoBoard:
 
     def measure_field(self):
     	self.ser.write(b'm')
+        time.sleep(1.0)
     	message = self.ser.readline()
         field = float(message.decode('utf-8'))
         field = "{:.3e}".format(field)
