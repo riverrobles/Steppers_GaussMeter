@@ -2,8 +2,8 @@ import serial
 import time
 
 class Meter:
-	def __init__(self,com,baud):
-		self.ser = serial.Serial(com,baud=9600)
+	def __init__(self,com,baud=9600):
+		self.ser = serial.Serial(com,baud)
 		self.conversions = {'°':'0','®':'.','µ':'5','³':'3','¶':'6','¹':'9','\xad':'-','«':'+','Ç':'G'}
 		
 	def measure(self): #measures field
@@ -22,9 +22,11 @@ class Meter:
 
 	def unit_gauss(self): #sets units to Gauss
 		self.ser.write(b"UNIT G\n")
+		time.sleep(0.2)
 
 	def unit_tesla(self): #sets units to Tesla 
 		self.ser.write(b"UNIT T\n")
+		time.sleep(0.2)
 	
 	def query(self,command):
 		self.ser.write(command.encode())
